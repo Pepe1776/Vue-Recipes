@@ -1,21 +1,25 @@
 <template>
   <div class="home">
-    <h1>My Recipes</h1>
+    <h1 class="title">My Recipes</h1>
     <button @click="togglePopup">Add new Recipe</button>
 
     <div class="recipes">
       <div class="card" v-for="recipe in $store.state.recipes" :key="recipe.slug">
         <h2>{{ recipe.title }}</h2>
-        <p>{{ recipe.description }}</p>
+        <p class="desc">{{ recipe.description }}</p>
         <router-link :to="`/recipe/${recipe.slug}`">
           <button>View Recipe</button>
         </router-link>
       </div>
     </div>
 
+    <div class="hero">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1613865342405-8bcc28fd22c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="image of food ingredients">
+    </div>
+
     <div class="add-recipe-popup" v-if="popupOpen">
       <div class="popup-content">
-        <h2>Add new recipe</h2>
+        <h2 class="pop-title">Add new recipe</h2>
 
         <form @submit.prevent="addNewRecipe">
           <div class="group">
@@ -23,7 +27,7 @@
             <input type="text" v-model="newRecipe.title" />
           </div>
 
-          <div class="group">
+          <div class="group desc">
             <label>Description</label>
             <textarea v-model="newRecipe.description"></textarea>
           </div>
@@ -117,16 +121,28 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Orbitron:wght@900&display=swap');
+
+
 .home {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-h1 {
+.desc {
+  color: #eef3f8;
   font-size: 3rem;
+}
+.method {
+  color: #08090A;
+}
+
+.title {
+  font-family: 'Carattere', cursive;
+  font-size: 5rem;
   margin-bottom: 32px;
+  color: #08090A;
 }
 
 .recipes {
@@ -138,7 +154,7 @@ h1 {
   padding: 1rem;
   border-radius: 5px;
   margin: 1rem;
-  background-color: #081c33;
+  background-color: #08090A;
 }
 
 .recipes .card h2 {
@@ -203,5 +219,23 @@ h1 {
 
 .popup-content button[type="submit"] {
   margin-right: 1rem;
+}
+.pop-title {
+  font-family: 'Carattere', cursive;
+  font-size: 66px;
+}
+.hero {
+  display: relative;
+}
+.hero-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  z-index: -2;
+  mix-blend-mode: overlay;
+  opacity: 50%;
+  border-radius: 30%;
 }
 </style>

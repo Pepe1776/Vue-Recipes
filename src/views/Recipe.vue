@@ -1,7 +1,7 @@
 <template>
 	<div class="recipe">
 		<router-link to="/">&lt; Back</router-link>
-		<h1>{{ recipe.title }}</h1>
+		<h1 class="title">{{ recipe.title }}</h1>
 		<p class="desc">{{ recipe.description }}</p>
 		<hr />
 		<div class="ingredients">
@@ -46,7 +46,7 @@ export default {
 }
 
 .desc {
-	font-size: 1.125rem;
+	font-size: 1.5rem;
 	line-height: 1.4;
 	margin-bottom: 1rem;
 }
@@ -60,6 +60,7 @@ h3 {
 }
 
 .ingredients {
+	font-size: 1.2rem;
 	padding: 1rem;
 	background-color: #081c33;
 	border-radius: 0.5rem;
@@ -73,6 +74,7 @@ h3 {
 }
 
 .method ol li {
+	font-size: 1.2rem;
 	margin-bottom: 2rem;
 	padding-bottom: 1rem;
 	list-style-position: inside;
