@@ -3,7 +3,7 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Manrope:wght@700&family=Orbitron:wght@900&display=swap');
 
 .root {
   --main: #4D194D;
@@ -23,7 +23,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif;
+ font-family: 'Manrope', sans-serif;
 }
 body {
  background: rgb(209, 45, 195);

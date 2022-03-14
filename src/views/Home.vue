@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { ref } from 'vue';
 import { useStore } from 'vuex';
 
@@ -85,16 +86,25 @@ export default {
     const addNewStep = () => {
       newRecipe.value.methodRows++;
     }
+
     
-    const addNewRecipe = () => {
+    const addNewRecipe = async () => {
       newRecipe.value.slug = newRecipe.value.title.toLowerCase().replace(/\s/g, '-');
+     
 
       if (!newRecipe.value.slug) {
         alert("Please enter a title");
         return;
       }
-
       store.commit('ADD_RECIPE', { ...newRecipe.value });
+      
+      const { data } = await axios.post("http://localhost:3001", {
+      name: this.name,
+      discription: this.discription,
+      ingredients: this.ingredients,
+      methods: this.methods,
+    });
+     this.newRecipe = data
 
       newRecipe.value = {
         title: '',
@@ -116,13 +126,11 @@ export default {
       addNewStep,
       addNewIngredient,
     }
-  }
-}
+  }}
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Orbitron:wght@900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Manrope:wght@700&family=Orbitron:wght@900&display=swap');
 
 .home {
   padding: 1rem;
