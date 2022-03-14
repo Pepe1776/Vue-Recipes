@@ -1,4 +1,4 @@
-# yt
+#Recipe Database
 
 ## Project setup
 ```
